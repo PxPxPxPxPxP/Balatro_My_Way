@@ -1,52 +1,15 @@
 -- Laundry Day
 SMODS.Challenge {
-    loc_txt = {
-    name = "Laundry Day"
-    }
-    local old_eval = SMODS.PokerHands['Straight'].evaluate
-SMODS.PokerHand:take_ownership('Straight', {
-  evaluate = function(parts, hand)
-    if condition then return {} end 
-    return old_eval(parts, hand) 
-  end,
-})
-    local old_eval = SMODS.PokerHands['Flush'].evaluate
-SMODS.PokerHand:take_ownership('Flush', {
-  evaluate = function(parts, hand)
-    if condition then return {} end 
-    return old_eval(parts, hand) 
-  end,
-})
-   local old_eval = SMODS.PokerHands['Straight Flush'].evaluate
-SMODS.PokerHand:take_ownership('Straight Flush', {
-  evaluate = function(parts, hand)
-    if condition then return {} end 
-    return old_eval(parts, hand)
-  end,
-})
-   local old_eval = SMODS.PokerHands['Flush House'].evaluate
-SMODS.PokerHand:take_ownership('Flush House', {
-  evaluate = function(parts, hand)
-    if condition then return {} end 
-    return old_eval(parts, hand) 
-  end,
-})
-   local old_eval = SMODS.PokerHands['Flush Five'].evaluate
-SMODS.PokerHand:take_ownership('Flush Five', {
-  evaluate = function(parts, hand)
-    if condition then return {} end 
-    return old_eval(parts, hand) 
-  end,
-})
+  
 
     key = 'laundry_day_1',
     rules = {
         custom = {
-            { id = 'laundry_day' },
+            { id = 'laundry_day' }
         }
     },
     jokers = {
-        { id = 'j_dna' },
+        { id = 'j_dna' }
     },
     restrictions = {
         banned_cards = {
@@ -66,6 +29,12 @@ SMODS.PokerHand:take_ownership('Flush Five', {
             { id = 'j_onyx_agate' },
             { id = 'j_flower_pot' },
             { id = 'j_seeing_double' },
+            { id = 'j_crafty' },
+            { id = 'j_devious' },
+            { id = 'j_crazy' },
+            { id = 'j_droll' },
+            { id = 'j_order' },
+            { id = 'j_tribe' },
             { id = 'c_star' },
             { id = 'c_moon' },
             { id = 'c_sun' },
@@ -90,9 +59,8 @@ SMODS.PokerHand:take_ownership('Flush Five', {
         },
 
                 banned_tags = {
-            { id = 'tag_standard' },
-        }
-    },
+            { id = 'tag_standard' }
+        },
     
     banned_other = {
             { id = 'bl_club', type = 'blind' },
@@ -100,9 +68,8 @@ SMODS.PokerHand:take_ownership('Flush Five', {
             { id = 'bl_window', type = 'blind' },
             { id = 'bl_head', type = 'blind' },
       },
-
-    },
-            
+ },
+     
     deck = {
         type = 'Challenge Deck',
         cards = {
@@ -120,5 +87,5 @@ SMODS.PokerHand:take_ownership('Flush Five', {
             { s = 'H', r = '3' },
             { s = 'H', r = '2' },
          }
-    },
+     }
 }
