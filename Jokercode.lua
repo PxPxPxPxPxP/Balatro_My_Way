@@ -71,3 +71,20 @@ SMODS.Joker {
     return xiferp_top_to_bottom()
 end
 
+-- Out in Spades...
+SMODS.Joker {
+    key = "astro_card",
+    blueprint_compat = false,
+    rarity = 2,
+    cost = 7,
+    pos = { x = ?, y = ? },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra }}
+    calculate = function(self, card, context)
+        if context.end_of_round then
+            local xiferp_spade_change = pseudorandom_element(G.hand.cards, xiferp_astro_card)
+            SMODS.change_base(xiferp_spade_change, 'S')
+        end,
+    end
+    
+}
