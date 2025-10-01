@@ -6,7 +6,7 @@
 	],
 	"description": "The kind of Balatro I wanted to make for... a couple of months but never did", 
 	"prefix": "xiferp",
-	"main_file": "Challengecode.lua",
+	"main_file": "Balatro_My_Way.lua",
 	"priority": 0, 
 	"badge_colour": "666666",
 	"badge_text_colour": "FFFFFF", 
