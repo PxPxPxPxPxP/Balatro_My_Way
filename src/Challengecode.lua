@@ -9,7 +9,7 @@ SMODS.Challenge {
         }
     },
     jokers = {
-        { id = 'j_dna' }
+        { id = 'j_corrupted_dna' }
     },
     restrictions = {
         banned_cards = {
