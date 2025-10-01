@@ -80,7 +80,7 @@ SMODS.Joker {
         return { vars = { card.ability.extra }}
     end,
     calculate = function(self, card, context)
-        if context.end_of_round then
+        if context.main_eval and context.end_of_round then
             local xiferp_spade_change = pseudorandom_element(G.hand.cards, xiferp_astro_card)
             SMODS.change_base(xiferp_spade_change, 'S')
         end
