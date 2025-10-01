@@ -1,0 +1,18 @@
+{
+	"id": "276327632763", 
+	"name": "Balatro_My_Way",
+	"author": [
+		"Jimbo Joshua Jokkeman"
+	],
+	"description": "The kind of Balatro I wanted to make for... a couple of months but never did", 
+	"prefix": "xiferp",
+	"main_file": "Balatro_My_Way.lua",
+	"priority": 0, 
+	"badge_colour": "666666",
+	"badge_text_colour": "FFFFFF", 
+	"display_name": "Balatro_My_Way",
+	"version": "1.0.0", 
+	"dependencies": [
+	"Steamodded (>=1.0.0~BETA-0827c)"
+    ], 
+}
