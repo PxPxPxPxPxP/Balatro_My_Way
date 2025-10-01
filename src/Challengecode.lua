@@ -1,7 +1,6 @@
 -- Laundry Day
 SMODS.Challenge {
   
-
     key = 'laundry_day_1',
     rules = {
         custom = {
@@ -9,7 +8,7 @@ SMODS.Challenge {
         }
     },
     jokers = {
-        { id = 'j_dna' }
+        { id = 'j_corrupted_dna' }
     },
     restrictions = {
         banned_cards = {
@@ -35,6 +34,11 @@ SMODS.Challenge {
             { id = 'j_droll' },
             { id = 'j_order' },
             { id = 'j_tribe' },
+            { id = 'j_runner' },
+            { id = 'j_four_fingers' },
+            { id = 'j_superposition' },
+            { id = 'j_shortcut' },
+            { id = 'j_smeared' },
             { id = 'c_star' },
             { id = 'c_moon' },
             { id = 'c_sun' },
@@ -67,7 +71,7 @@ SMODS.Challenge {
             { id = 'bl_goad', type = 'blind' },
             { id = 'bl_window', type = 'blind' },
             { id = 'bl_head', type = 'blind' },
-      },
+      }
  },
      
     deck = {

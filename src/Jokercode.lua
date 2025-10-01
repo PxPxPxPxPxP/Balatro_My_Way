@@ -1,7 +1,7 @@
 --Creates an atlas for cards to use
 SMODS.Atlas {
 	key = "My_Way_and_The_Highway",
-	path = "????.png",
+	path = "1234567890.png",
 	px = 71,
 	py = 95
 }
@@ -9,19 +9,14 @@ SMODS.Atlas {
 -- Corrupted DNA
 SMODS.Joker {
     key = "corrupted_dna",
+    atlas = "My_Way_and_The_Highway",
     blueprint_compat = true,
     rarity = 2,
     cost = 5,
-    pos = { x = ?, y = ? },
-    loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.copy } }
-    end,
+    pos = { x = 0, y = 0 },
+    config = { extra = { copy }},
     calculate = function(self, card, context)
-        if context.scoring_hand[1] not context.blueprint then
-            local eval = function() not G.RESET_JIGGLES end
-            juice_card_until(card, eval, true)
-        end
-        if context.before
+        if context.scoring_hand[1] and not context.blueprint then
             G.playing_card = (G.playing_card and G.playing_card + 1) or 1
             local copied_card = copy_card(context.scoring_hand[1], nil, nil, G.playing_card)
             SMODS.modify_rank(copied_card, pseudorandom_element(xiferp_card_rank_roll, {-1, 0, 1}))
@@ -57,34 +52,37 @@ SMODS.Joker {
 -- Top to Bottom
 SMODS.Joker {
     key = "top_to_bottom",
+    atlas = "My_Way_and_The_Highway",
     blueprint_compat = false,
     rarity = 2,
     cost = 7,
-    pos = { x = ?, y = ? },
+    pos = {x = 1, y = 0}
 }
-    
-    local xiferp_top_to_bottom = SMODS.wrap_around_straight
-    function SMODS.wrap_around_straight()
-    if next(SMODS.find_card("j_xiferp_top_to_bottom")) then
-        return true
-    end
-    return xiferp_top_to_bottom()
+local ref = SMODS.wrap_around_straight
+function SMODS.wrap_around_straight() 
+  if next(SMODS.find_card("j_xiferp_top_to_bottom")) then
+    return true
+  end
+
+  return ref()
 end
+
 
 -- Out in Spades...
 SMODS.Joker {
     key = "astro_card",
+    atlas = "My_Way_and_The_Highway",
     blueprint_compat = false,
     rarity = 2,
     cost = 7,
-    pos = { x = ?, y = ? },
+    pos = { x = 2, y = 0 },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra }}
+    end,
     calculate = function(self, card, context)
         if context.end_of_round then
             local xiferp_spade_change = pseudorandom_element(G.hand.cards, xiferp_astro_card)
             SMODS.change_base(xiferp_spade_change, 'S')
-        end,
+        end
     end
-    
 }
