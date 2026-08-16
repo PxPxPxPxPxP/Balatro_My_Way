@@ -1,0 +1,91 @@
+[[patches]]
+[patches.pattern]
+target = 'functions/UI_definitions.lua'
+pattern = '''
+    G.shop_jokers = CardArea(
+      G.hand.T.x+0,
+      G.hand.T.y+G.ROOM.T.y + 9,
+      math.min(G.GAME.shop.joker_max*1.02*G.CARD_W,4.08*G.CARD_W),
+      1.05*G.CARD_H, 
+      {card_limit = G.GAME.shop.joker_max, type = 'shop', highlight_limit = 1, negative_info = true})
+''' 
+position = "at" 
+payload = '''
+
+    G.shop_jokers = CardArea(
+      G.hand.T.x+0,
+      G.hand.T.y+G.ROOM.T.y + 9,
+      math.min(G.GAME.shop.joker_max*1.02*G.CARD_W,2.04*G.CARD_W),
+      1.05*G.CARD_H, 
+      {card_limit = G.GAME.shop.joker_max, type = 'shop', highlight_limit = 1, negative_info = true})
+
+    G.shop_element = CardArea(
+      G.hand.T.x+0,
+      G.hand.T.y+G.ROOM.T.y + 9,
+      2.0*G.CARD_W,
+      1.05*G.CARD_H, 
+      {card_limit = 2, type = 'shop', highlight_limit = 1})
+''' 
+match_indent = false
+
+[[patches]]
+[patches.pattern]
+target = 'functions/UI_definitions.lua'
+pattern = '''
+{n=G.UIT.C, config={align = "cm", padding = 0.2, r=0.2, colour = G.C.L_BLACK, emboss = 0.05, minw = 8.2}, nodes={
+	{n=G.UIT.O, config={object = G.shop_jokers}},
+}},
+''' 
+position = "at" 
+payload = '''
+{n=G.UIT.C, config={align = "cm", padding = 0.2, r=0.2, colour = G.C.L_BLACK, emboss = 0.05, minw = 5.2}, nodes={
+	{n=G.UIT.O, config={object = G.shop_jokers}},
+}},
+{n=G.UIT.C, config={align = "cm", padding = 0.2, r=0.2, colour = G.C.L_BLACK, emboss = 0.05, minw = 2.5}, nodes={
+	{n=G.UIT.O, config={object = G.shop_element}},
+}},
+''' 
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = '''
+    for i = 1, G.GAME.shop.joker_max - #G.shop_jokers.cards do
+        G.shop_jokers:emplace(create_card_for_shop(G.shop_jokers))
+    end
+end
+
+''' 
+position = "after"
+payload = '''
+if G.load_shop_element = nil then 
+    nosave_shop = true
+    G.shop_element:load(G.load_shop_element)
+    print 'tin'
+    for k, v in ipairs(G.shop_jokers.cards) do
+        create_shop_card_ui(v)
+        if v.set.xiferp_Element then v:start_materialize() end
+    end
+    G.load_shop_element = nil
+else
+    print 'antimony'    
+    for i = 1, 2 do
+        G.shop_element:emplace(create_card_for_shop(G.shop_element))
+    end
+end
+
+''' 
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = '''
+self.load_shop_vouchers = nil
+''' 
+position = "after"
+payload = ''' 
+self.load_shop_element = nil
+''' 
+match_indent = true
